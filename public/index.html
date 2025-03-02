@@ -31,11 +31,16 @@
             class="w-[90%] border-b-2 border-b-amber-50 outline-none" />
           <button
             hx-post="/add-task"
+            hx-target="#todo-list-container"
+            hx-swap="beforeend"
             hx-trigger="click"
             class="font-bold bg-slate-400 rounded-lg cursor-pointer hover:brightness-95 p-2">
             Add
           </button>
         </form>
+
+
+        
 
         <!-- showing tasks list -->
         <div class="list-container mx-4 mt-5">
@@ -54,21 +59,8 @@
             </div>
           </div>
 
-          <!-- item 2 -->
 
-          <div class="flex justify-between py-3">
-            <p>task 1</p>
 
-            <div class="">
-              <button
-                class="font-bold bg-green-500 rounded-lg cursor-pointer hover:brightness-95 p-2">
-                done
-              </button>
-              <button
-                class="font-bold bg-red-500 rounded-lg cursor-pointer hover:brightness-95 p-2">
-                scrap
-              </button>
-            </div>
           </div>
         </div>
       </div>

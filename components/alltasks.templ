@@ -6,17 +6,25 @@ import "github.com/GOAT-stack-todo-app/utils"
 templ AllTasks(tasks []utils.Task) {
         for _, task := range tasks {
         <div class="flex justify-between py-4">
-            <p>{task.Value}</p>
+            <p class="mx-4 mt-5">{task.Value}</p>
             <div class="">
+            if !task.Completed {
+
                 <button
                     class="font-bold bg-green-500 rounded-lg cursor-pointer hover:brightness-95 p-2"
                     hx-get={"/finish/"+task.ID}
+                    hx-swap="innerHTML"
+                    hx-target="#todo-list-container"
                 >
                     done
                 </button>
+            }
                 <button
                     class="font-bold bg-red-500 rounded-lg cursor-pointer hover:brightness-95 p-2"
                     hx-get={"/delete/"+task.ID}
+                    hx-swap="innerHTML"
+                    hx-target="#todo-list-container"
+
                 >
                     scrap
                 </button>

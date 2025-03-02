@@ -21,8 +21,8 @@ func main() {
 
 	// api endpoints
 	server.HandleFunc("GET /", routes.HomePage)
-	server.HandleFunc("GET /tasks", routes.GetAllTasks)
 	server.HandleFunc("POST /add-task", routes.AddTask)
+	server.HandleFunc("GET /tasks", routes.GetAllTasks)
 	server.HandleFunc("GET /finish/{id}", routes.FinishByID)
 	server.HandleFunc("GET /delete/{id}", routes.DeleteByID)
 

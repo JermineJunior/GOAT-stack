@@ -9,14 +9,14 @@ templ HomeBody(tasks []utils.Task) {
       <div class="container bg-gray-500 p-5 w-2xl rounded-lg">
         <p class="font-bold ml-4">TODO APP</p>
         <!-- line breaker -->
-        <div class="h-[5px] w-[96%] bg-amber-50 mx-auto my-3"></div>
+        <div class="h-[3px] w-[96%] bg-amber-50 mx-auto my-3"></div>
             // 
         <form action="" class="mx-4 flex justify-between">
           <input
             type="text"
             name="task"
             placeholder="Enter your task"
-            class="w-3/4 border-b-2 border-b-amber-50 outline-none" />
+            class="w-full border-b-2 border-none outline-none" />
           <button
             hx-trigger="click"
             hx-target="#todo-list-container"
@@ -26,6 +26,7 @@ templ HomeBody(tasks []utils.Task) {
             Add
           </button>
         </form>
+        <div class="h-[1px] w-[96%] bg-amber-50 mx-auto my-3"></div>
              
             // array of tasks starts here
             <div class="" id="todo-list-container">
