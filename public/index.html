@@ -13,7 +13,67 @@
     <!--  -->
     <title>GOAT APP</title>
   </head>
-  <body>
-    <h1 class="bg-slate-500">GOAT app</h1>
+  <body class="">
+    <!--  -->
+
+    <div class="text-white h-full grid items-center justify-center">
+      <!-- todo box -->
+      <div class="container bg-gray-500 p-5 w-2xl rounded-lg">
+        <p class="font-bold ml-4">TODO APP</p>
+        <!-- line breaker -->
+        <div class="h-[2px] w-[96%] bg-amber-50 mx-auto my-3"></div>
+
+        <form action="" class="mx-4 flex justify-between">
+          <input
+            type="text"
+            name="task"
+            placeholder="Enter your task"
+            class="w-[90%] border-b-2 border-b-amber-50 outline-none" />
+          <button
+            hx-post="/add-task"
+            hx-trigger="click"
+            class="font-bold bg-slate-400 rounded-lg cursor-pointer hover:brightness-95 p-2">
+            Add
+          </button>
+        </form>
+
+        <!-- showing tasks list -->
+        <div class="list-container mx-4 mt-5">
+          <div class="flex justify-between">
+            <p>task 1</p>
+
+            <div class="">
+              <button
+                class="font-bold bg-green-500 rounded-lg cursor-pointer hover:brightness-95 p-2">
+                done
+              </button>
+              <button
+                class="font-bold bg-red-500 rounded-lg cursor-pointer hover:brightness-95 p-2">
+                scrap
+              </button>
+            </div>
+          </div>
+
+          <!-- item 2 -->
+
+          <div class="flex justify-between py-3">
+            <p>task 1</p>
+
+            <div class="">
+              <button
+                class="font-bold bg-green-500 rounded-lg cursor-pointer hover:brightness-95 p-2">
+                done
+              </button>
+              <button
+                class="font-bold bg-red-500 rounded-lg cursor-pointer hover:brightness-95 p-2">
+                scrap
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  -->
   </body>
 </html>

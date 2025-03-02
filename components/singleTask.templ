@@ -1,0 +1,24 @@
+package components
+
+import "github.com/GOAT-stack-todo-app/utils"
+
+
+templ SingleTask(task utils.Task) {
+     <div class="flex justify-between py-4">
+            <p>{task.Value}</p>
+            <div class="">
+                <button
+                    class="font-bold bg-green-500 rounded-lg cursor-pointer hover:brightness-95 p-2"
+                    hx-get={"/finish/"+task.ID}
+                >
+                    done
+                </button>
+                <button
+                    class="font-bold bg-red-500 rounded-lg cursor-pointer hover:brightness-95 p-2"
+                    hx-get={"/delete/"+task.ID}
+                >
+                    scrap
+                </button>
+            </div>
+        </div>
+}
