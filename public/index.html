@@ -1,16 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- <style href="/public/output.css" type="stylesheet"></style> -->
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-
     <!--  -->
+    <link rel="stylesheet" href="/public/output.css" />
+    <script src="/public/htmx.min.js"></script>
     <title>GOAT APP</title>
   </head>
   <body class="">
@@ -28,19 +23,18 @@
             type="text"
             name="task"
             placeholder="Enter your task"
-            class="w-[90%] border-b-2 border-b-amber-50 outline-none" />
+            class="w-[90%] border-b-2 border-b-amber-50 outline-none"
+          />
           <button
             hx-post="/add-task"
             hx-target="#todo-list-container"
             hx-swap="beforeend"
             hx-trigger="click"
-            class="font-bold bg-slate-400 rounded-lg cursor-pointer hover:brightness-95 p-2">
+            class="font-bold bg-slate-400 rounded-lg cursor-pointer hover:brightness-95 p-2"
+          >
             Add
           </button>
         </form>
-
-
-        
 
         <!-- showing tasks list -->
         <div class="list-container mx-4 mt-5">
@@ -49,18 +43,16 @@
 
             <div class="">
               <button
-                class="font-bold bg-green-500 rounded-lg cursor-pointer hover:brightness-95 p-2">
+                class="font-bold bg-green-500 rounded-lg cursor-pointer hover:brightness-95 p-2"
+              >
                 done
               </button>
               <button
-                class="font-bold bg-red-500 rounded-lg cursor-pointer hover:brightness-95 p-2">
+                class="font-bold bg-red-500 rounded-lg cursor-pointer hover:brightness-95 p-2"
+              >
                 scrap
               </button>
             </div>
-          </div>
-
-
-
           </div>
         </div>
       </div>

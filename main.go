@@ -17,10 +17,10 @@ func main() {
 	PORT := ":5000"
 
 	// static landing page
-	// server.Handle("/", http.FileServer(http.Dir("./public")))
 
+	server.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
 	// api endpoints
-	server.HandleFunc("GET /", routes.HomePage)
+	server.HandleFunc("GET /{$}", routes.HomePage)
 	server.HandleFunc("POST /add-task", routes.AddTask)
 	server.HandleFunc("GET /tasks", routes.GetAllTasks)
 	server.HandleFunc("GET /finish/{id}", routes.FinishByID)
