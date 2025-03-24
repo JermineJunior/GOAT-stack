@@ -55,7 +55,7 @@ func AddTask(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("tasks are: ", tasks)
 
 	singleTask := components.SingleTask(task)
-	singleTask.Render(r.Context(), w)
+	_ = singleTask.Render(r.Context(), w)
 
 }
 func FinishByID(w http.ResponseWriter, r *http.Request) {

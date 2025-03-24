@@ -26,6 +26,6 @@ func main() {
 	server.HandleFunc("GET /finish/{id}", routes.FinishByID)
 	server.HandleFunc("GET /delete/{id}", routes.DeleteByID)
 
-	fmt.Println("server up and running...")
+	log.Println("running on >> http://127.0.0.1:5000")
 	log.Fatal(http.ListenAndServe(PORT, server))
 }

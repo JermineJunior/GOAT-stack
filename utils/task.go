@@ -6,6 +6,10 @@ type Task struct {
 	Completed bool
 }
 
+func (t Task) isCompleted() bool {
+	return t.Completed
+}
+
 func LinearSearch(id string, tasks []Task) int {
 
 	for index, task := range tasks {

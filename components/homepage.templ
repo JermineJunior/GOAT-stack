@@ -3,42 +3,35 @@ package components
 import "github.com/GOAT-stack-todo-app/utils"
 
 templ HomeBody(tasks []utils.Task) {
-        <!-- main container -->
-    <div class="text-white h-full grid items-center justify-center">
-      <!-- todo box -->
-      <div class="container bg-gray-500 p-5 w-2xl rounded-lg">
-        <p class="font-bold ml-4">TODO APP</p>
-        <!-- line breaker -->
-        <div class="h-[3px] w-[96%] bg-amber-50 mx-auto my-3"></div>
-            // 
-        <form action="" class="mx-4 flex justify-between">
-          <input
-            type="text"
-            name="task"
-            placeholder="Enter your task"
-            class="w-full border-b-2 border-none outline-none" />
-          <button
-            hx-trigger="click"
-            hx-target="#todo-list-container"
-            hx-swap="beforeend"
-            hx-post="/add-task"
-            class="font-bold bg-slate-400 rounded-lg cursor-pointer hover:brightness-95 p-2">
-            Add
-          </button>
-        </form>
-        <div class="h-[1px] w-[96%] bg-amber-50 mx-auto my-3"></div>
-             
-            // array of tasks starts here
-            <div class="" id="todo-list-container">
-            if len(tasks) != 0 {
-                @AllTasks(tasks)
-            }
-            </div>
-      </div>
+<!-- main container -->
+<div class="text-white h-full grid items-center justify-center">
+  <!-- todo box -->
+  <div class="container bg-gray-600 p-5 w-2xl rounded-lg">
+    <p class="font-bold ml-4">TODO APP</p>
+    <form action="" id="form" class="mx-4 mt-4 flex justify-between space-x-4">
+      <input type="text" id="task" name="task" placeholder="Enter your task" class="input" />
+      <button hx-trigger="click" hx-target="#todo-list-container" hx-swap="beforeend" hx-post="/add-task" class="btn">
+        Add
+      </button>
+    </form>
+    // array of tasks starts here
+    <div class="mt-4" id="todo-list-container">
+      if len(tasks) != 0 {
+      @AllTasks(tasks)
+      }
     </div>
+  </div>
+  <script>
+    const form = document.getElementById('form');
 
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('task').value = '';
+    })
+  </script>
+</div>
 }
 
 templ HomePage(tasks []utils.Task) {
-    @Layout(HomeBody(tasks)) 
+@Layout(HomeBody(tasks))
 }
