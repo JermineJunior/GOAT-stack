@@ -18,7 +18,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 
 	// rendering all tasks
 	home := components.HomePage(tasks)
-	home.Render(r.Context(), w)
+	_ = home.Render(r.Context(), w)
 }
 
 func GetAllTasks(w http.ResponseWriter, r *http.Request) {
@@ -27,13 +27,13 @@ func GetAllTasks(w http.ResponseWriter, r *http.Request) {
 
 	if len(tasks) == 0 {
 		fmt.Println("no tasks to show")
-		w.Write([]byte("no tasks to show"))
+		_, _ = w.Write([]byte("no tasks to show"))
 		return
 	}
 
 	// rendering all tasks
 	component := components.AllTasks(tasks)
-	component.Render(r.Context(), w)
+	_ = component.Render(r.Context(), w)
 
 }
 func AddTask(w http.ResponseWriter, r *http.Request) {
@@ -44,7 +44,7 @@ func AddTask(w http.ResponseWriter, r *http.Request) {
 
 	if input == "" {
 		fmt.Println("form is empty")
-		w.Write([]byte("form is empty"))
+		_, _ = w.Write([]byte("form is empty"))
 		return
 	}
 
