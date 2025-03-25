@@ -1,13 +1,9 @@
 package utils
 
 type Task struct {
-	ID        string
-	Value     string
-	Completed bool
-}
-
-func (t Task) isCompleted() bool {
-	return t.Completed
+	ID        string `json:"id"`
+	Value     string `json:"value"`
+	Completed bool   `json:"completed"`
 }
 
 func LinearSearch(id string, tasks []Task) int {

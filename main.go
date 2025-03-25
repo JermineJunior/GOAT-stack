@@ -17,8 +17,8 @@ func main() {
 	PORT := ":5000"
 
 	// static landing page
-
-	server.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
+	fs := http.FileServer(http.Dir("public"))
+	server.Handle("/public/", http.StripPrefix("/public/", fs))
 	// api endpoints
 	server.HandleFunc("GET /{$}", routes.HomePage)
 	server.HandleFunc("POST /add-task", routes.AddTask)

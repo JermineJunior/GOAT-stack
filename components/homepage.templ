@@ -3,25 +3,25 @@ package components
 import "github.com/GOAT-stack-todo-app/utils"
 
 templ HomeBody(tasks []utils.Task) {
-<!-- main container -->
-<div class="text-white h-full grid items-center justify-center">
-  <!-- todo box -->
-  <div class="container bg-gray-600 p-5 w-2xl rounded-lg">
-    <p class="font-bold ml-4">TODO APP</p>
-    <form action="" id="form" class="mx-4 mt-4 flex justify-between space-x-4">
-      <input type="text" id="task" name="task" placeholder="Enter your task" class="input" />
-      <button hx-trigger="click" hx-target="#todo-list-container" hx-swap="beforeend" hx-post="/add-task" class="btn">
-        Add
-      </button>
-    </form>
-    // array of tasks starts here
-    <div class="mt-4" id="todo-list-container">
-      if len(tasks) != 0 {
-      @AllTasks(tasks)
-      }
-    </div>
-  </div>
-  <script>
+	<!-- main container -->
+	<div class="text-white h-full grid items-center justify-center">
+		<!-- todo box -->
+		<div class="container bg-gray-600 p-5 w-2xl rounded-lg">
+			<p class="font-bold ml-4">TODO APP</p>
+			<form action="" id="form" class="mx-4 mt-4 flex justify-between space-x-4">
+				<input type="text" id="task" name="task" placeholder="Enter your task" class="input"/>
+				<button hx-trigger="click" hx-target="#todo-list-container" hx-swap="beforeend" hx-post="/add-task" class="btn">
+					Add
+				</button>
+			</form>
+			// array of tasks starts here
+			<div class="mt-4" id="todo-list-container">
+				if len(tasks) != 0 {
+					@AllTasks(tasks)
+				}
+			</div>
+		</div>
+		<script>
     const form = document.getElementById('form');
 
     form.addEventListener('submit', (e) => {
@@ -29,9 +29,9 @@ templ HomeBody(tasks []utils.Task) {
       document.getElementById('task').value = '';
     })
   </script>
-</div>
+	</div>
 }
 
 templ HomePage(tasks []utils.Task) {
-@Layout(HomeBody(tasks))
+	@Layout(HomeBody(tasks))
 }
