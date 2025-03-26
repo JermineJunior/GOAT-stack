@@ -6,14 +6,16 @@ import (
 	"strconv"
 
 	"github.com/GOAT-stack-todo-app/components"
+	"github.com/GOAT-stack-todo-app/storage"
 	"github.com/GOAT-stack-todo-app/utils"
 )
 
 var tasks []utils.Task
+var db = storage.NewStorage[[]utils.Task]("data.json")
 
 // landing page
 func HomePage(w http.ResponseWriter, r *http.Request) {
-
+	_ = db.Load(&tasks)
 	fmt.Println("homepage visitor")
 
 	// rendering all tasks
@@ -51,11 +53,11 @@ func AddTask(w http.ResponseWriter, r *http.Request) {
 	// creating a new task and added to tasks
 	task := utils.Task{strconv.Itoa(len(tasks) + 1), input, false} //? using the len of arr + 1 as id
 	tasks = append(tasks, task)
-
+	_ = db.Save(tasks)
 	fmt.Println("tasks are: ", tasks)
 
 	singleTask := components.SingleTask(task)
-	singleTask.Render(r.Context(), w)
+	_ = singleTask.Render(r.Context(), w)
 
 }
 func FinishByID(w http.ResponseWriter, r *http.Request) {
@@ -67,13 +69,13 @@ func FinishByID(w http.ResponseWriter, r *http.Request) {
 
 	if index == -1 {
 		fmt.Println("id not found")
-		w.Write([]byte("id not found"))
+		_, _ = w.Write([]byte("id not found"))
 		return
 	}
 
 	tasks[index].Completed = true
 	fmt.Println("task was added.")
-
+	_ = db.Save(tasks)
 	w.Header().Set("HX-Trigger", "tasksChanged")
 	// Re-render the complete tasks list to show updated status
 	tasksComponent := components.AllTasks(tasks)
@@ -94,9 +96,9 @@ func DeleteByID(w http.ResponseWriter, r *http.Request) {
 	}
 	tasks = append(tasks[:index], tasks[index+1:]...)
 	fmt.Println("task was deleted.")
-
+	_ = db.Save(tasks)
 	w.Header().Set("HX-Trigger", "tasksChanged")
 	home := components.AllTasks(tasks)
-	home.Render(r.Context(), w)
+	_ = home.Render(r.Context(), w)
 
 }

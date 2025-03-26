@@ -17,8 +17,8 @@ func main() {
 	PORT := ":5000"
 
 	// static landing page
-
-	server.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
+	fs := http.FileServer(http.Dir("public"))
+	server.Handle("/public/", http.StripPrefix("/public/", fs))
 	// api endpoints
 	server.HandleFunc("GET /{$}", routes.HomePage)
 	server.HandleFunc("POST /add-task", routes.AddTask)
@@ -26,6 +26,6 @@ func main() {
 	server.HandleFunc("GET /finish/{id}", routes.FinishByID)
 	server.HandleFunc("GET /delete/{id}", routes.DeleteByID)
 
-	fmt.Println("server up and running...")
+	log.Println("running on >> http://127.0.0.1:5000")
 	log.Fatal(http.ListenAndServe(PORT, server))
 }
